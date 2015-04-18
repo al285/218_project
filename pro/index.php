@@ -26,13 +26,24 @@ public columnHeading;
     		fclose($handle);
 	  }
 	  return $records;
-		
-	                     foreach($records as $record) {
-   	                      foreach($record as $key => $value) {
-     		                  echo $key . ': ' . $value .  "</br> \n";
-   	                     }
-   	               echo '<hr>';
- 	                      }
+
+//creating new array 
+require 'ReadCSV.php';
+$collID = new readingFile();
+$collID->readCSV('hd2013.csv',TRUE);
+$collD = new readingFile();
+$collD->readCSV('varlist.csv',TRUE);
+ foreach($collD as $record)
+ {
+ 		$Collegedict [$record['varname']] = $record['varTitle']; 
+ 		 
+ }
+ for($i=0;$i<count($collID); $i++)
+ {
+ 	
+	$collID[i] = array_combine($Collegedict,$collID[i]);	
+ }
+ 
 	
 	}
 
